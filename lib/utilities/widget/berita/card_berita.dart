@@ -48,8 +48,8 @@ class _CardBeritaState extends State<CardBerita> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Image.network(
-                            'https://batipuahateh.desa.id/desa/upload/artikel/kecil_' +
-                                snapshot.data![index]['gambar'],
+                            'https://batipuahateh.desa.id/desa/upload/artikel/kecil_'
+                            '${snapshot.data![index]['gambar']}',
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) {
                                 return child;

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,26 +28,21 @@ class NewsCard extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-            child: Image.network(
-              imgUrl,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  );
-                }
-              },
-              height: 150,
+            child: CachedNetworkImage(
+              key: UniqueKey(),
+              imageUrl: imgUrl,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  Center(
+                child:
+                    CircularProgressIndicator(value: downloadProgress.progress),
+              ),
+              maxHeightDiskCache: 200,
               width: MediaQuery.of(context).size.width,
+              height: 150,
               fit: BoxFit.cover,
-              cacheWidth: 1000,
+              maxWidthDiskCache: 200,
+              errorWidget: (context, url, error) =>
+                  const Center(child: Text('Gagal Memuat Gambar')),
             ),
           ),
           Padding(

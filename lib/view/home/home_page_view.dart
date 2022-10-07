@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_launcher_icons/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nagarismart/utilities/widget/api_service.dart';
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
@@ -6,6 +9,11 @@ import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/utilities/widget/layanan.dart';
 import 'package:nagarismart/utilities/widget/wali_nagari.dart';
 import 'package:flutter/material.dart';
+import 'package:nagarismart/view/webview/bansos/web_view_bansos.dart';
+import 'package:nagarismart/view/webview/batipuahAteh/web_view_batipuah_ateh.dart';
+import 'package:nagarismart/view/webview/oase/web_view_oase.dart';
+import 'package:nagarismart/view/webview/oss/web_view_oss.dart';
+import 'package:nagarismart/view/webview/samsat/web_view_samsat.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
@@ -63,7 +71,14 @@ class _HomePageViewState extends State<HomePageView> {
                     child: Layanan(
                       icon: const Icon(Icons.fact_check),
                       title: 'Surat Online',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ViewWebBatipuahAteh(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   Expanded(
@@ -71,7 +86,13 @@ class _HomePageViewState extends State<HomePageView> {
                     child: Layanan(
                       icon: const Icon(Icons.local_library_sharp),
                       title: 'Dukcapil',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ViewWebOase(),
+                            ));
+                      },
                     ),
                   ),
                   Expanded(
@@ -79,7 +100,13 @@ class _HomePageViewState extends State<HomePageView> {
                     child: Layanan(
                       icon: const Icon(Icons.nature_people_rounded),
                       title: 'NIB/SKU',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ViewWebOss(),
+                            ));
+                      },
                     ),
                   ),
                 ],
@@ -92,7 +119,13 @@ class _HomePageViewState extends State<HomePageView> {
                     child: Layanan(
                       icon: const Icon(Icons.event_repeat_rounded),
                       title: 'Samsat',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ViewWebSamsat(),
+                            ));
+                      },
                     ),
                   ),
                   Expanded(
@@ -100,7 +133,14 @@ class _HomePageViewState extends State<HomePageView> {
                     child: Layanan(
                       icon: const Icon(Icons.volunteer_activism_rounded),
                       title: 'Cek Bansos',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ViewWebBansos(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   Expanded(
@@ -127,7 +167,13 @@ class _HomePageViewState extends State<HomePageView> {
                 children: [
                   Text('Berita Terkini', style: headlineSmall),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const GetBerita(),
+                          ));
+                    },
                     child: Text(
                       'More',
                       style: headlineSmall,
@@ -144,10 +190,8 @@ class _HomePageViewState extends State<HomePageView> {
                       ? CarouselSlider.builder(
                           itemCount: 3,
                           itemBuilder: (context, index, realIndex) {
-                            var data = snapshot.data;
-                            var date =
-                                DateTime.tryParse(data![index].tglUpload);
-
+                            var data = snapshot.data!;
+                            var image = getGambar + data[index].gambar;
                             return GestureDetector(
                               onTap: () => {
                                 Navigator.push(
@@ -160,7 +204,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 )
                               },
                               child: Card(
-                                elevation: 4,
+                                elevation: 3,
                                 shadowColor: Colors.black,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius:
@@ -173,32 +217,25 @@ class _HomePageViewState extends State<HomePageView> {
                                       borderRadius: const BorderRadius.all(
                                         Radius.circular(10),
                                       ),
-                                      child: Image.network(
-                                        getGambar + data[index].gambar,
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) {
-                                          if (loadingProgress == null) {
-                                            return child;
-                                          } else {
-                                            return Center(
-                                              child: CircularProgressIndicator(
-                                                value: loadingProgress
-                                                            .expectedTotalBytes !=
-                                                        null
-                                                    ? loadingProgress
-                                                            .cumulativeBytesLoaded /
-                                                        loadingProgress
-                                                            .expectedTotalBytes!
-                                                    : null,
-                                              ),
-                                            );
-                                          }
-                                        },
-                                        // height: 200,
+                                      child: CachedNetworkImage(
+                                        key: UniqueKey(),
+                                        imageUrl: image,
+                                        progressIndicatorBuilder:
+                                            (context, url, downloadProgress) =>
+                                                Center(
+                                          child: CircularProgressIndicator(
+                                              value: downloadProgress.progress),
+                                        ),
+                                        maxHeightDiskCache: 200,
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        fit: BoxFit.fill,
-                                        cacheWidth: 1000,
+                                        height: 200,
+                                        fit: BoxFit.cover,
+                                        maxWidthDiskCache: 200,
+                                        errorWidget: (context, url, error) =>
+                                            const Center(
+                                                child: Text(
+                                                    'Gagal Memuat Gambar')),
                                       ),
                                     ),
                                     Padding(
@@ -213,14 +250,15 @@ class _HomePageViewState extends State<HomePageView> {
                                             overflow: TextOverflow.clip,
                                             maxLines: 3,
                                             style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                                shadows: [
-                                                  const Shadow(
-                                                      blurRadius: 10,
-                                                      offset: Offset(2, 2),
-                                                      color: Colors.black)
-                                                ]),
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              shadows: [
+                                                const Shadow(
+                                                    blurRadius: 10,
+                                                    offset: Offset(2, 2),
+                                                    color: Colors.black)
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -238,8 +276,8 @@ class _HomePageViewState extends State<HomePageView> {
                             enlargeStrategy: CenterPageEnlargeStrategy.scale,
                           ),
                         )
-                      : const Center(
-                          child: CircularProgressIndicator(),
+                      : Center(
+                          child: Container(),
                         ),
                 ),
               )

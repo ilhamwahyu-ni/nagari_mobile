@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -6,6 +7,7 @@ import 'package:nagarismart/utilities/widget/artikelModel.dart';
 import 'package:nagarismart/utilities/widget/berita/news_card.dart';
 import 'package:nagarismart/utilities/widget/search.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GetBerita extends StatefulWidget {
   const GetBerita({super.key});
@@ -21,25 +23,24 @@ class _GetBeritaState extends State<GetBerita> {
 
   @override
   Widget build(BuildContext context) {
-    var headlineSmall = Theme.of(context)
-        .textTheme
-        .titleMedium!
-        .copyWith(fontWeight: FontWeight.w600);
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.05),
+      backgroundColor: Color.fromARGB(255, 240, 235, 235).withOpacity(0.95),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              leading: const Icon(Icons.newspaper, color: Colors.black45),
+              // leading: const Icon(Icons.newspaper),
               title: const Text(
                 "Semua Berita",
                 style: TextStyle(color: Colors.black),
               ),
               backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.search, color: Colors.black45),
+                  icon: const Icon(
+                    Icons.search,
+                  ),
                   onPressed: () {
                     showSearch(
                       context: context,
@@ -49,7 +50,7 @@ class _GetBeritaState extends State<GetBerita> {
                 ),
               ],
               elevation: 3.0,
-              automaticallyImplyLeading: false,
+              automaticallyImplyLeading: true,
               expandedHeight: 50,
               floating: true,
               snap: true,
@@ -113,9 +114,7 @@ class _GetBeritaState extends State<GetBerita> {
                                   String url =
                                       "https://batipuahateh.desa.id/artikel/";
                                   await Share.share(
-                                    url +
-                                        "$formatter.toString()}/" +
-                                        slug.toString(),
+                                    "$url$formatter/$slug",
                                   );
                                 },
                               ),
@@ -148,105 +147,205 @@ class DetailBerita extends StatelessWidget {
     // final newsCard = ModalRoute.of(context)!.settings.arguments as NewsCard;
     String? getGambar =
         'https://batipuahateh.desa.id/desa/upload/artikel/sedang_';
+    String url = "https://batipuahateh.desa.id/artikel/";
+    var date = DateTime.tryParse(artikelModel.tglUpload!);
+    String formatter = DateFormat(' dd LLLL yyyy ').format(date!);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:
+          const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: Colors.black12,
-              elevation: 2.0,
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
+              elevation: 3.0,
               automaticallyImplyLeading: true,
-              expandedHeight: 30,
+              expandedHeight: 0,
               floating: true,
               snap: false,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await Share.share(
+                      "$url${DateFormat('yyyy/MM/dd').format(date)}/${artikelModel.slug}",
+                    );
+                  },
                   icon: const Icon(
                     Icons.screen_share_outlined,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final Uri launcer = Uri.parse(
+                        "$url${DateFormat('yyyy/MM/dd').format(date)}/${artikelModel.slug}");
+                    launchUrl(launcer);
+                  },
                   icon: const Icon(
-                    Icons.forward_rounded,
+                    Icons.ios_share,
                   ),
                 ),
               ],
             ),
           ];
         },
-        body: ListView(
-          children: [
-            Stack(
-              children: [
-                SizedBox(
-                  height: 300,
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.network(getGambar + artikelModel.gambar!,
-                      fit: BoxFit.cover),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+          child: ListView(
+            children: [
+              Card(
+                elevation: 10,
+                shadowColor: Colors.black,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(16))),
+                margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    topRight: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                    bottomLeft: Radius.circular(8),
+                  ),
+                  child: SizedBox(
+                    height: 300,
+                    width: MediaQuery.of(context).size.width,
+                    child: Image.network('$getGambar${artikelModel.gambar}',
+                        fit: BoxFit.cover),
+                  ),
                 ),
-                Positioned(
-                  top: 200.0,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
-                    child: Container(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text(
-                          Bidi.stripHtmlIfNeeded(artikelModel.judul!),
-                          textAlign: TextAlign.justify,
-                          style: GoogleFonts.poppins(
-                            fontSize: 17,
-                          ),
-                        ),
+              ),
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(
+                      Bidi.stripHtmlIfNeeded(artikelModel.judul!),
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        shadows: [
+                          const Shadow(
+                              blurRadius: 10,
+                              offset: Offset(2, 2),
+                              color: Color.fromARGB(255, 255, 255, 255))
+                        ],
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            Container(
-              color: Color.fromARGB(255, 255, 255, 255),
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text(
-                  Bidi.stripHtmlIfNeeded(artikelModel.isi!),
-                  textAlign: TextAlign.justify,
-                  style: GoogleFonts.poppins(
-                    fontSize: 17,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.access_time_filled_sharp,
+                      color: Colors.red,
+                      size: 28,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(formatter),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    Bidi.stripHtmlIfNeeded('${artikelModel.isi}'),
+                    textAlign: TextAlign.justify,
+                    style: GoogleFonts.poppins(
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: SizedBox(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                child: Image.network(getGambar + artikelModel.gambar1!,
-                        fit: BoxFit.cover) ??
-                    Container(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Expanded(
+                  flex: 1,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: '$getGambar${artikelModel.gambar1}',
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                              value: downloadProgress.progress),
+                        ),
+                        errorWidget: (context, url, error) => Container(),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: SizedBox(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                child: Image.network(getGambar + artikelModel.gambar2!,
-                        fit: BoxFit.cover) ??
-                    Container(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Expanded(
+                  flex: 1,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: '$getGambar${artikelModel.gambar2}',
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                              value: downloadProgress.progress),
+                        ),
+                        errorWidget: (context, url, error) => Container(),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Expanded(
+                  flex: 1,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: '$getGambar${artikelModel.gambar3}',
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                              value: downloadProgress.progress),
+                        ),
+                        errorWidget: (context, url, error) => Container(),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -23,7 +23,7 @@ class _WebViewStackState extends State<WebViewStack> {
     return Stack(
       children: [
         WebView(
-          initialUrl: batipuahAteh,
+          initialUrl: batipuahAtehsiteman,
           onWebViewCreated: (webViewcontroller) {
             widget.controller.complete(webViewcontroller);
           },
