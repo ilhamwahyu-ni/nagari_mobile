@@ -181,8 +181,10 @@ class _HomePageViewState extends State<HomePageView> {
                   ),
                 ],
               ),
-              Expanded(
-                flex: 1,
+              const SizedBox(
+                height: 15,
+              ),
+              Center(
                 child: FutureBuilder<List<ArtikelModel>>(
                   future: _artikelList.getArtikel(),
                   builder: (context, AsyncSnapshot<List?> snapshot) => snapshot
@@ -229,7 +231,7 @@ class _HomePageViewState extends State<HomePageView> {
                                         maxHeightDiskCache: 200,
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        height: 200,
+                                        height: 250,
                                         fit: BoxFit.cover,
                                         maxWidthDiskCache: 200,
                                         errorWidget: (context, url, error) =>
@@ -254,8 +256,8 @@ class _HomePageViewState extends State<HomePageView> {
                                               color: Colors.white,
                                               shadows: [
                                                 const Shadow(
-                                                    blurRadius: 10,
-                                                    offset: Offset(2, 2),
+                                                    blurRadius: 4,
+                                                    offset: Offset(2, 5),
                                                     color: Colors.black)
                                               ],
                                             ),
@@ -269,15 +271,23 @@ class _HomePageViewState extends State<HomePageView> {
                             );
                           },
                           options: CarouselOptions(
-                            height: 200,
-                            autoPlay: true,
-                            enlargeCenterPage: true,
-                            viewportFraction: 0.7,
-                            enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          ),
+                              height: 250,
+                              autoPlay: true,
+                              enlargeCenterPage: false,
+                              viewportFraction: 0.8,
+                              enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                              initialPage: 2),
                         )
                       : Center(
-                          child: Container(),
+                          child: Column(
+                            children: const [
+                              CircularProgressIndicator(),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text('Memuat Data...')
+                            ],
+                          ),
                         ),
                 ),
               )
