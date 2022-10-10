@@ -2,6 +2,6 @@
 
 A new First Flutter project.
 
-## didalam aplikasi ini, pertama belum menggunakan state management,
+## Didalam aplikasi ini, pertama belum menggunakan state management, Pertukaran didalam state masuh manual
 
 
