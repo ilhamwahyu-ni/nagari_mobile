@@ -185,7 +185,7 @@ class DetailBerita extends StatelessWidget {
                   onPressed: () async {
                     final Uri launcer = Uri.parse(
                         "$url${DateFormat('yyyy/MM/dd').format(date)}/${artikelModel.slug}");
-                    launchUrl(launcer);
+                    launchUrl(launcer, mode: LaunchMode.externalApplication);
                   },
                   icon: const Icon(
                     Icons.ios_share,
@@ -215,8 +215,17 @@ class DetailBerita extends StatelessWidget {
                   child: SizedBox(
                     height: 300,
                     width: MediaQuery.of(context).size.width,
-                    child: Image.network('$getGambar${artikelModel.gambar}',
-                        fit: BoxFit.cover),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      imageUrl: '$getGambar${artikelModel.gambar}',
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                            value: downloadProgress.progress),
+                      ),
+                      errorWidget: (context, url, error) => Container(),
+                      maxHeightDiskCache: 250,
+                    ),
                   ),
                 ),
               ),

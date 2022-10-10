@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +9,15 @@ import 'package:nagarismart/auth/firebase_auth_provider.dart';
 import 'package:nagarismart/helper/loading/loading_screen.dart';
 import 'package:nagarismart/view/account/forgot_password_view.dart';
 import 'package:nagarismart/view/account/register_view.dart';
-import 'package:nagarismart/view/webview/batipuahAteh/web_view_batipuah_ateh.dart';
 import 'package:nagarismart/view/home/nav_bar_item.dart';
 import 'package:nagarismart/view/verify_email_view.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) {
+    await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
+  }
   FlutterNativeSplash.remove();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -63,7 +68,7 @@ class HomePage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is AuthStateLoggedIn) {
-          return const ViewWebBatipuahAteh();
+          return Container();
         } else if (state is AuthStateNeedVerification) {
           return const VerifyEmailView();
         } else if (state is AuthStateLoggedOut) {

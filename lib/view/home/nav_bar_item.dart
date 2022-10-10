@@ -2,9 +2,6 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/view/home/home_page_view.dart';
-import 'package:nagarismart/view/webview/oase/web_view_oase.dart';
-import 'package:nagarismart/view/webview/oss/web_view_oss.dart';
-import 'package:nagarismart/view/webview/samsat/web_view_samsat.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -18,9 +15,6 @@ class _HomeViewState extends State<HomeView> {
   final screen = [
     const HomePageView(),
     const GetBerita(),
-    const ViewWebOase(),
-    const ViewWebOss(),
-    const ViewWebSamsat(),
   ];
 
   @override
