@@ -6,6 +6,7 @@ import 'package:nagarismart/utilities/widget/api_service.dart';
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/utilities/widget/layanan.dart';
+import 'package:nagarismart/utilities/widget/profil/profil.dart';
 import 'package:nagarismart/utilities/widget/wali_nagari.dart';
 import 'package:flutter/material.dart';
 import 'package:nagarismart/view/home/kepala_jorong/jorong.dart';
@@ -54,7 +55,13 @@ class _HomePageViewState extends State<HomePageView> {
                   child: Layanan(
                     icon: const Icon(Icons.roofing),
                     title: 'Profil',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const Profil(),
+                          ));
+                    },
                   ),
                 ),
                 Expanded(

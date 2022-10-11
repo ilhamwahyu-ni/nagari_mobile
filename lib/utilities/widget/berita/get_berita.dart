@@ -104,7 +104,8 @@ class _GetBeritaState extends State<GetBerita> {
                                   ),
                                 )
                               },
-                              child: NewsCard(
+                              child: 
+                              NewsCard(
                                 imgUrl: getGambar + data[index].gambar,
                                 judul: data[index].judul,
                                 tgl: formatter,
@@ -195,7 +196,8 @@ class DetailBerita extends StatelessWidget {
             ),
           ];
         },
-        body: Padding(
+        body: 
+        Padding(
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
           child: ListView(
             children: [

@@ -85,8 +85,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/www/index.html
-    - assets/www/style/style.css
+  
     - assets/splash/splash.png
     - assets/walinagari/pak_wali_.png
     - assets/icon/whatsapp.svg
@@ -95,6 +94,7 @@ flutter:
     - assets/jorong/3.png
     - assets/jorong/4.png
     - assets/jorong/5.png
+    - assets/profil/profil.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
