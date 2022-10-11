@@ -8,6 +8,7 @@ import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/utilities/widget/layanan.dart';
 import 'package:nagarismart/utilities/widget/wali_nagari.dart';
 import 'package:flutter/material.dart';
+import 'package:nagarismart/view/home/kepala_jorong/jorong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageView extends StatefulWidget {
@@ -164,7 +165,14 @@ class _HomePageViewState extends State<HomePageView> {
                   child: Layanan(
                     icon: const Icon(Icons.whatsapp),
                     title: 'No. Penting  ',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const Jorong(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 Expanded(
