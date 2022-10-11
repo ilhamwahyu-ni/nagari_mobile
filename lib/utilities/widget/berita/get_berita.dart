@@ -24,7 +24,7 @@ class _GetBeritaState extends State<GetBerita> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 235, 235).withOpacity(0.95),
+      backgroundColor: const Color.fromARGB(255, 240, 235, 235).withOpacity(0.95),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [

@@ -42,7 +42,7 @@ class _CardBeritaState extends State<CardBerita> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 100,
                         width: 150,
                         child: Padding(
@@ -101,7 +101,7 @@ class _CardBeritaState extends State<CardBerita> {
                               ),
                               Row(
                                 children: [
-                                  Text('Dilihat : '),
+                                  const Text('Dilihat : '),
                                   Text(
                                     snapshot.data![index]['hit'] + ' kali' ??
                                         'NA',

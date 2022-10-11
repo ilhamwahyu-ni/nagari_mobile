@@ -90,11 +90,11 @@ flutter:
     - assets/splash/splash.png
     - assets/walinagari/pak_wali_.png
     - assets/icon/whatsapp.svg
-    - assets/jorong/1.jpeg
-    - assets/jorong/2.jpeg
-    - assets/jorong/3.jpeg
-    - assets/jorong/4.jpeg
-    - assets/jorong/5.jpeg
+    - assets/jorong/1.png
+    - assets/jorong/2.png
+    - assets/jorong/3.png
+    - assets/jorong/4.png
+    - assets/jorong/5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

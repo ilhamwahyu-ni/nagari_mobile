@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Jorong extends StatefulWidget {
   const Jorong({super.key});
@@ -12,32 +13,32 @@ List<KepalaJorong> dataKepalaJorong = [
   KepalaJorong(
     nama: 'Syafril J',
     jorong: 'Jorong Balai mato Aie',
-    wa: '082288030389',
-    image: 'assets/jorong/1.jpeg',
+    wa: '+6282288030389',
+    image: 'assets/jorong/1.png',
   ),
   KepalaJorong(
     nama: 'Mardetillah',
     jorong: 'Jorong Balai Sabuah',
-    wa: '082284638400',
-    image: 'assets/jorong/2.jpeg',
+    wa: '+6282284638400',
+    image: 'assets/jorong/2.png',
   ),
   KepalaJorong(
     nama: 'Jufri Efendi',
     jorong: 'Jorong Jambu',
-    wa: '081363291020',
-    image: 'assets/jorong/3.jpeg',
+    wa: '+6281363291020',
+    image: 'assets/jorong/3.png',
   ),
   KepalaJorong(
     nama: 'Evendri Nurdin',
     jorong: 'Jorong Subarang',
-    wa: '085215008744',
-    image: 'assets/jorong/4.jpeg',
+    wa: '+6285215008744',
+    image: 'assets/jorong/4.png',
   ),
   KepalaJorong(
     nama: 'Indra Satria',
     jorong: 'Jorong Sawah Diujuang',
-    wa: '082225655689',
-    image: 'assets/jorong/5.jpeg',
+    wa: '+6282225655689',
+    image: 'assets/jorong/5.png',
   ),
 ];
 
@@ -51,10 +52,6 @@ class _JorongState extends State<Jorong> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             const SliverAppBar(
-              title: Text(
-                "Hubungi Kepala Jorong",
-                style: TextStyle(color: Colors.black),
-              ),
               backgroundColor: Colors.white,
               foregroundColor: Colors.red,
               elevation: 3.0,
@@ -72,71 +69,110 @@ class _JorongState extends State<Jorong> {
             )
           ];
         },
-        body: ListView.builder(
-          itemCount: dataKepalaJorong.length,
-          itemBuilder: (context, index) {
-            final jorong = dataKepalaJorong[index];
-            return Card(
-                elevation: 3,
-                margin: const EdgeInsets.all(8),
-                child: Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.red,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                    jorong.image,
-                                  ),
-                                  fit: BoxFit.fill),
-                            ),
-
-                            // child: Image(
-                            //   image: AssetImage(jorong.image),
-                            //   width: 100,
-                            //   height: 100,
-                            // ),
-                          ),
-                        ),
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 18,
+            ),
+            Card(
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Kepala Jorong',
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: dataKepalaJorong.length,
+                itemBuilder: (context, index) {
+                  var jorong = dataKepalaJorong[index];
+                  var whatsappURl =
+                      "whatsapp://send?phone=${jorong.wa}&text=Assalamualaikum Pak Jorong";
+                  return Card(
+                    elevation: 3,
+                    margin: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              jorong.nama,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 25, fontWeight: FontWeight.w500),
+                    ),
+                    child: Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                            child: CircleAvatar(
+                              radius: 60,
+                              backgroundColor: Colors.red,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        jorong.image,
+                                      ),
+                                      fit: BoxFit.contain),
+                                ),
+                              ),
                             ),
-                            Text(
-                              'Kepala ${jorong.jorong}',
-                              style: GoogleFonts.poppins(fontSize: 15),
-                            ),
-                            Row(
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text('Hubungi : '),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.whatsapp),
-                                  splashRadius: 2,
+                                Text(
+                                  jorong.nama,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                  child: Text(
+                                    'Kepala ${jorong.jorong}',
+                                    style: GoogleFonts.poppins(fontSize: 15),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    const Text('Hubungi : '),
+                                    IconButton(
+                                      onPressed: () async {
+                                        final Uri wa = Uri.parse(whatsappURl);
+                                        await launchUrl(wa);
+                                      },
+                                      isSelected: true,
+                                      icon: const Icon(
+                                        Icons.whatsapp,
+                                        color: Colors.red,
+                                        size: 30,
+                                      ),
+                                      splashRadius: 2,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ));
-          },
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
