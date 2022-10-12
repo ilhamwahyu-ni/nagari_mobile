@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -73,175 +71,86 @@ class _JorongState extends State<Jorong> {
           ];
         },
         body: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: AnimatedList(
-              initialItemCount: dataKepalaJorong.length,
-              itemBuilder: (context, index, animation) {
-                var jorong = dataKepalaJorong[index];
-                var whatsappURl =
-                    "whatsapp://send?phone=${jorong.wa}&text=Assalamualaikum Pak Jorong";
-                return SlideTransition(
-                  position: animation.drive(Tween()),
-                  child: Card(
-                    elevation: 3,
-                    margin: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    child: Expanded(
-                      flex: 1,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-                            child: CircleAvatar(
-                              radius: 60,
-                              backgroundColor: Colors.red,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        jorong.image,
-                                      ),
-                                      fit: BoxFit.contain),
-                                ),
-                              ),
+          height: MediaQuery.of(context).size.height,
+          child: ListView.builder(
+            // physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: dataKepalaJorong.length,
+            itemBuilder: (context, index) {
+              var jorong = dataKepalaJorong[index];
+              var whatsappURl =
+                  "whatsapp://send?phone=${jorong.wa}&text=Assalamualaikum Pak Jorong";
+              return Card(
+                elevation: 3,
+                margin: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: Expanded(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                        child: CircleAvatar(
+                          radius: 60,
+                          backgroundColor: Colors.red,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    jorong.image,
+                                  ),
+                                  fit: BoxFit.contain),
                             ),
                           ),
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              jorong.nama,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 25, fontWeight: FontWeight.w500),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                              child: Text(
+                                'Kepala ${jorong.jorong}',
+                                style: GoogleFonts.poppins(fontSize: 15),
+                              ),
+                            ),
+                            Row(
                               children: [
-                                Text(
-                                  jorong.nama,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                  child: Text(
-                                    'Kepala ${jorong.jorong}',
-                                    style: GoogleFonts.poppins(fontSize: 15),
+                                const Text('Hubungi : '),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    final Uri wa = Uri.parse(whatsappURl);
+                                    await launchUrl(wa);
+                                  },
+                                  child: const Icon(
+                                    Icons.whatsapp,
+                                    size: 30,
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    const Text('Hubungi : '),
-                                    IconButton(
-                                      onPressed: () async {
-                                        final Uri wa = Uri.parse(whatsappURl);
-                                        await launchUrl(wa);
-                                      },
-                                      isSelected: true,
-                                      icon: const Icon(
-                                        Icons.whatsapp,
-                                        color: Colors.red,
-                                        size: 30,
-                                      ),
-                                      splashRadius: 2,
-                                    ),
-                                  ],
                                 ),
                               ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                );
-              },
-            )
-
-            // ListView.builder(
-            //   // physics: const NeverScrollableScrollPhysics(),
-            //   shrinkWrap: true,
-            //   itemCount: dataKepalaJorong.length,
-            //   itemBuilder: (context, index) {
-            //     var jorong = dataKepalaJorong[index];
-            //     var angka = dataKepalaJorong.length;
-            //     var whatsappURl =
-            //         "whatsapp://send?phone=${jorong.wa}&text=Assalamualaikum Pak Jorong";
-            //     return Card(
-            //       elevation: 3,
-            //       margin: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-            //       shape: const RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.all(
-            //           Radius.circular(10),
-            //         ),
-            //       ),
-            //       child: Expanded(
-            //         flex: 1,
-            //         child: Row(
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-            //               child: CircleAvatar(
-            //                 radius: 60,
-            //                 backgroundColor: Colors.red,
-            //                 child: Container(
-            //                   decoration: BoxDecoration(
-            //                     shape: BoxShape.circle,
-            //                     image: DecorationImage(
-            //                         image: AssetImage(
-            //                           jorong.image,
-            //                         ),
-            //                         fit: BoxFit.contain),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //             Expanded(
-            //               flex: 2,
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Text(
-            //                     jorong.nama,
-            //                     style: GoogleFonts.poppins(
-            //                         fontSize: 25, fontWeight: FontWeight.w500),
-            //                   ),
-            //                   Padding(
-            //                     padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-            //                     child: Text(
-            //                       'Kepala ${jorong.jorong}',
-            //                       style: GoogleFonts.poppins(fontSize: 15),
-            //                     ),
-            //                   ),
-            //                   Row(
-            //                     children: [
-            //                       const Text('Hubungi : '),
-            //                       IconButton(
-            //                         onPressed: () async {
-            //                           final Uri wa = Uri.parse(whatsappURl);
-            //                           await launchUrl(wa);
-            //                         },
-            //                         isSelected: true,
-            //                         icon: const Icon(
-            //                           Icons.whatsapp,
-            //                           color: Colors.red,
-            //                           size: 30,
-            //                         ),
-            //                         splashRadius: 2,
-            //                       ),
-            //                     ],
-            //                   ),
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //     );
-            //   },
-            // ),
-            ),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

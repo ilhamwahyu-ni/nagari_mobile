@@ -44,7 +44,6 @@ class Search extends SearchDelegate {
                 var date = DateTime.tryParse(data![index].tglUpload);
                 String formatter = DateFormat('yyyy/MM/dd').format(date!);
 
-
                 return GestureDetector(
                   onTap: () => Navigator.push(
                       context,
@@ -111,8 +110,8 @@ class Search extends SearchDelegate {
                                   ),
                                   Text(
                                     formatter,
-                                    style: const TextStyle(
-                                        color: Colors.black54),
+                                    style:
+                                        const TextStyle(color: Colors.black54),
                                   ),
                                   const SizedBox(
                                     height: 5,

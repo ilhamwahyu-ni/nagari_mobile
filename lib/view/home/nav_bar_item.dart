@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
+import 'package:nagarismart/utilities/widget/faq/faq.dart';
 import 'package:nagarismart/view/home/home_page_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,6 +16,9 @@ class _HomeViewState extends State<HomeView> {
   final screen = [
     const HomePageView(),
     const GetBerita(),
+    const Faq(),
+    const Faq(),
+    const Faq(),
   ];
 
   @override

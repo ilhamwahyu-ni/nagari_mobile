@@ -5,6 +5,7 @@ import 'package:nagarismart/constans/webname.dart';
 import 'package:nagarismart/utilities/widget/api_service.dart';
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
+import 'package:nagarismart/utilities/widget/faq/faq.dart';
 import 'package:nagarismart/utilities/widget/layanan.dart';
 import 'package:nagarismart/utilities/widget/profil/profil.dart';
 import 'package:nagarismart/utilities/widget/wali_nagari.dart';
@@ -187,7 +188,13 @@ class _HomePageViewState extends State<HomePageView> {
                   child: Layanan(
                     icon: const Icon(Icons.dashboard_customize_sharp),
                     title: 'Lihat Semua',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Faq(),
+                          ));
+                    },
                   ),
                 ),
               ],
@@ -252,17 +259,15 @@ class _HomePageViewState extends State<HomePageView> {
                                     child: CachedNetworkImage(
                                       key: UniqueKey(),
                                       imageUrl: image,
-                                      progressIndicatorBuilder:
-                                          (context, url, downloadProgress) =>
-                                              Center(
-                                        child: CircularProgressIndicator(
-                                            value: downloadProgress.progress),
-                                      ),
-                                      maxHeightDiskCache: 200,
+                                      maxHeightDiskCache: 75,
                                       width: MediaQuery.of(context).size.width,
                                       height: 250,
                                       fit: BoxFit.cover,
-                                      maxWidthDiskCache: 200,
+                                      maxWidthDiskCache: 75,
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                              child:
+                                                  CircularProgressIndicator()),
                                       errorWidget: (context, url, error) =>
                                           const Center(
                                               child:

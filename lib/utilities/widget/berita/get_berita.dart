@@ -24,7 +24,8 @@ class _GetBeritaState extends State<GetBerita> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 235, 235).withOpacity(0.95),
+      backgroundColor:
+          const Color.fromARGB(255, 240, 235, 235).withOpacity(0.95),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
@@ -104,8 +105,7 @@ class _GetBeritaState extends State<GetBerita> {
                                   ),
                                 )
                               },
-                              child: 
-                              NewsCard(
+                              child: NewsCard(
                                 imgUrl: getGambar + data[index].gambar,
                                 judul: data[index].judul,
                                 tgl: formatter,
@@ -151,7 +151,8 @@ class DetailBerita extends StatelessWidget {
     String url = "https://batipuahateh.desa.id/artikel/";
     var date = DateTime.tryParse(artikelModel.tglUpload!);
     String formatter = DateFormat(' dd LLLL yyyy ').format(date!);
-    return Scaffold(
+    return 
+    Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
       body: NestedScrollView(
@@ -196,8 +197,7 @@ class DetailBerita extends StatelessWidget {
             ),
           ];
         },
-        body: 
-        Padding(
+        body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
           child: ListView(
             children: [
