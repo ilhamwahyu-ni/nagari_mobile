@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
 
@@ -22,7 +23,7 @@ class FetcArtikel {
         throw Exception('Gagal Memuat Berita');
       }
     } on Exception catch (e) {
-      print('error : $e');
+      log('error : $e');
     }
     return results;
   }

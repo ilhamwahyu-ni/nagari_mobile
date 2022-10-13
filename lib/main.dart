@@ -7,6 +7,7 @@ import 'package:nagarismart/auth/bloc/auth_bloc_bloc.dart';
 import 'package:nagarismart/auth/firebase_auth_provider.dart';
 import 'package:nagarismart/helper/loading/loading_screen.dart';
 import 'package:nagarismart/view/account/forgot_password_view.dart';
+import 'package:nagarismart/view/account/login_view.dart';
 import 'package:nagarismart/view/account/register_view.dart';
 import 'package:nagarismart/view/home/nav_bar_item.dart';
 import 'package:nagarismart/view/verify_email_view.dart';
@@ -67,11 +68,11 @@ class HomePage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is AuthStateLoggedIn) {
-          return Container();
+          return const HomeView();
         } else if (state is AuthStateNeedVerification) {
           return const VerifyEmailView();
         } else if (state is AuthStateLoggedOut) {
-          return const HomeView();
+          return const LoginView();
         } else if (state is AuthStateRegistering) {
           return const RegisterView();
         } else if (state is AuthStateForgotPassword) {

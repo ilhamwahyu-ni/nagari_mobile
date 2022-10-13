@@ -90,7 +90,7 @@ class AuthBlocBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
       emit(AuthStateLoggedOut(
         exception: null,
         isLoading: true,
-        loadingText: 'Mohon Tunggu, Kami akan Log In kamu',
+        loadingText: 'Mohon Tunggu, Kamu Sedang LogIn',
       ));
       final email = event.email;
       final password = event.password;

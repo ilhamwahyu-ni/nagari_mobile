@@ -151,8 +151,7 @@ class DetailBerita extends StatelessWidget {
     String url = "https://batipuahateh.desa.id/artikel/";
     var date = DateTime.tryParse(artikelModel.tglUpload!);
     String formatter = DateFormat(' dd LLLL yyyy ').format(date!);
-    return 
-    Scaffold(
+    return Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
       body: NestedScrollView(

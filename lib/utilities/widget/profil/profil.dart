@@ -156,7 +156,7 @@ class _ProfilState extends State<Profil> {
                           style: GoogleFonts.poppins(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 255, 0, 0),
+                            color: const Color.fromARGB(255, 255, 0, 0),
                             shadows: [
                               const Shadow(
                                   blurRadius: 10,

@@ -106,14 +106,14 @@ class FaqModel {
 
 final tile = <FaqModel>[
   FaqModel(
-    title: 'Bagaimana Cara Menggunakan Layanan Surat Online?',
+    title: 'Bagaimana Cara Menggunakan Layanan Surat Online Nagari?',
     keterangan:
         'Silahkan masukkan NIK dan PIN Untuk Menggunakan Seluruh Layanan. Layanan Berupa Buat Surat,Ganti PIN layanan dan sebagainya',
     wa: null,
     wa2: null,
   ),
   FaqModel(
-    title: 'Bagaimana Cara Saya mendapatkan PIN Layanan?',
+    title: 'Bagaimana Cara Saya mendapatkan PIN Layanan Surat Online Nagari?',
     keterangan:
         'Pertama Pastikan Dokumen Kependudukan Anda Terdaftar Di nagari Batipuah Ateh, Kemudian Silahkan Minta PIN Pada Operator Nagari  dengan Klik Nomor WhatsApp Dibawah',
     wa: "+6282323066956",
@@ -136,7 +136,7 @@ final tile = <FaqModel>[
   FaqModel(
     title: 'Bagaimana cara membuat NIB atau SKU?',
     keterangan:
-        'Anda Bisa mendaftar lansung dengan memakai Nomor WhatsApp atau E-mail yang Aktif, juga bisa Lihat Panduan di Websiter OSS.go.id, Jika butuh Bantuan silahkan datang ke kantor wali Nagari',
+        'Anda Bisa mendaftar lansung dengan memakai Nomor WhatsApp atau E-mail yang Aktif, juga bisa Lihat Panduan di Website OSS.go.id, Jika butuh Bantuan silahkan datang ke kantor wali Nagari',
     wa: "+6282387807523",
     wa2: null,
   ),
