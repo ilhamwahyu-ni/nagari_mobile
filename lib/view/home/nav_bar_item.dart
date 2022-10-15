@@ -1,8 +1,5 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nagarismart/auth/bloc/auth_bloc_bloc.dart';
-import 'package:nagarismart/utilities/dialog/logout_dialog.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/utilities/widget/faq/faq.dart';
 import 'package:nagarismart/utilities/widget/layanan/Semua_layanan.dart';
@@ -56,22 +53,6 @@ class _HomeViewState extends State<HomeView> {
           BottomNavyBarItem(
               icon: const Icon(Icons.question_answer),
               title: const Text('FAQ'),
-              activeColor: const Color.fromARGB(255, 255, 0, 0),
-              inactiveColor: Colors.black54),
-          BottomNavyBarItem(
-              icon: IconButton(
-                splashRadius: 1,
-                onPressed: () async {
-                  final shouldLogOut = await showLogOutDialog(context);
-                  if (shouldLogOut) {
-                    context.read<AuthBlocBloc>().add(
-                          const AuthEventLogOut(),
-                        );
-                  }
-                },
-                icon: Icon(Icons.logout_rounded),
-              ),
-              title: const Text('Log Out'),
               activeColor: const Color.fromARGB(255, 255, 0, 0),
               inactiveColor: Colors.black54),
         ],

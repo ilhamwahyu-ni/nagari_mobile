@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nagarismart/auth/bloc/auth_bloc_bloc.dart';
 import 'package:nagarismart/constans/webname.dart';
+import 'package:nagarismart/utilities/dialog/logout_dialog.dart';
 import 'package:nagarismart/utilities/widget/api_service.dart';
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
@@ -38,8 +41,55 @@ class _HomePageViewState extends State<HomePageView> {
         .titleMedium!
         .copyWith(fontWeight: FontWeight.w600);
     return Scaffold(
-        backgroundColor:
-            const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
+      backgroundColor:
+          const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              title: Text(
+                "Batipuah Ateh",
+                style: GoogleFonts.poppins().copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
+              elevation: 3,
+              automaticallyImplyLeading: true,
+              expandedHeight: 0,
+              floating: true,
+              snap: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              // ignore: prefer_const_constructors
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    const Image(image: AssetImage('assets/splash/splash.png')),
+              ),
+              actions: [
+                IconButton(
+                  splashRadius: 1,
+                  onPressed: () async {
+                    final shouldLogOut = await showLogOutDialog(context);
+                    if (shouldLogOut) {
+                      context.read<AuthBlocBloc>().add(
+                            const AuthEventLogOut(),
+                          );
+                    }
+                  },
+                  icon: const Icon(Icons.logout_rounded),
+                ),
+              ],
+            ),
+          ];
+        },
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SizedBox(
@@ -144,6 +194,7 @@ class _HomePageViewState extends State<HomePageView> {
                           );
                           launchUrl(
                             launcer,
+                            mode: LaunchMode.externalApplication,
                             webViewConfiguration: const WebViewConfiguration(
                               enableJavaScript: true,
                               enableDomStorage: true,
@@ -163,6 +214,7 @@ class _HomePageViewState extends State<HomePageView> {
                           );
                           launchUrl(
                             launcer,
+                            mode: LaunchMode.externalApplication,
                             webViewConfiguration: const WebViewConfiguration(
                               enableJavaScript: true,
                               enableDomStorage: true,
@@ -193,10 +245,11 @@ class _HomePageViewState extends State<HomePageView> {
                         title: 'Lihat Semua',
                         onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SemuaLayanan(),
-                              ));
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SemuaLayanan(),
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -264,13 +317,13 @@ class _HomePageViewState extends State<HomePageView> {
                                             child: CachedNetworkImage(
                                               key: UniqueKey(),
                                               imageUrl: image,
-                                              maxHeightDiskCache: 75,
+                                              maxHeightDiskCache: 200,
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
                                               height: 250,
                                               fit: BoxFit.cover,
-                                              maxWidthDiskCache: 75,
+                                              maxWidthDiskCache: 200,
                                               placeholder: (context, url) =>
                                                   const Center(
                                                       child:
@@ -298,8 +351,8 @@ class _HomePageViewState extends State<HomePageView> {
                                                     color: Colors.white,
                                                     shadows: [
                                                       const Shadow(
-                                                          blurRadius: 4,
-                                                          offset: Offset(2, 5),
+                                                          blurRadius: 3,
+                                                          offset: Offset(3, 3),
                                                           color: Colors.black)
                                                     ],
                                                   ),
@@ -337,6 +390,8 @@ class _HomePageViewState extends State<HomePageView> {
               ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

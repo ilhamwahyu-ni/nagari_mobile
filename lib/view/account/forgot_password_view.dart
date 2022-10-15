@@ -44,7 +44,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.red,
           title: const Text('Reset Password'),
         ),
         body: Padding(
@@ -88,9 +88,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    elevation: 3.0,
-                    minimumSize: const Size(300, 50),
-                    ),
+                  elevation: 3.0,
+                  minimumSize: const Size(300, 50),
+                ),
                 onPressed: () {
                   context.read<AuthBlocBloc>().add(
                         const AuthEventLogOut(),

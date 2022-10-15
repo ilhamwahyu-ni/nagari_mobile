@@ -50,7 +50,7 @@ class WaliNagari extends StatelessWidget {
                   children: [
                     const Spacer(),
                     Text(
-                      'Nagari Santiang',
+                      'ADE PUTRA,SE',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w900,
                             fontStyle: FontStyle.italic,
@@ -59,9 +59,12 @@ class WaliNagari extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      'Batipuah Ateh',
+                      'Wali Nagari',
                       style: Theme.of(context).textTheme.headline6!.copyWith(
-                          fontWeight: FontWeight.w500, color: Colors.white),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                     ),
                     const Spacer(),
                     Text(
