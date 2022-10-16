@@ -108,12 +108,12 @@ final tile = <FaqModel>[
   FaqModel(
     title: 'Bagaimana Cara Menggunakan Layanan Surat Online Nagari?',
     keterangan:
-        'Silahkan masukkan NIK dan PIN Untuk Menggunakan Seluruh Layanan. Layanan Berupa Buat Surat,Ganti PIN layanan dan sebagainya',
+        'Silahkan masukkan NIK dan PIN yang telah didapat dari Kantor Wali Nagari, Untuk Menggunakan Seluruh Layanan. Layanan Berupa Buat Surat,Ganti PIN layanan dan sebagainya',
     wa: null,
     wa2: null,
   ),
   FaqModel(
-    title: 'Bagaimana Cara Saya mendapatkan PIN Layanan Surat Online Nagari?',
+    title: 'Bagaimana Cara Saya mendapatkan PIN Surat Online Nagari?',
     keterangan:
         'Pertama Pastikan Dokumen Kependudukan Anda Terdaftar Di nagari Batipuah Ateh, Kemudian Silahkan Minta PIN Pada Operator Nagari  dengan Klik Nomor WhatsApp Dibawah',
     wa: "+6282323066956",
@@ -122,14 +122,14 @@ final tile = <FaqModel>[
   FaqModel(
     title: 'Bagaimana Cara Menggunakan Layanan Dukcapil?',
     keterangan:
-        'Cara Pertama  : Pastikan Anda Memiliki E-mail Aktif kemudian Lakukan Registrasi Pada Aplikasi OaseDukcapilTanahDatar jika Registrasi berhasil silahkan pilih layanan yang di inginkan kemudian foto seluruh dokumen administrasi seperti KK,KTP,ijazah,Buku Nikah,Surat Pindah,F1,01,KeteranganLahir,    Cara Kedua Layanan Dengan Petugas Registrasi Nagari (PRN).',
+        'Cara Pertama  : Pastikan Anda Memiliki E-mail Aktif kemudian Lakukan Registrasi Pada Aplikasi OaseDukcapilTanahDatar jika Registrasi berhasil silahkan pilih layanan yang di inginkan kemudian foto seluruh dokumen administrasi seperti KK,KTP,ijazah,Buku Nikah,Surat Pindah,F1,01,KeteranganLahir.\nCara Kedua : Layanan Dengan Petugas Registrasi Nagari (PRN).',
     wa: "6282387807523",
     wa2: null,
   ),
   FaqModel(
     title: 'Surat Pindah Nagari, F1.01,F1.03?',
     keterangan:
-        'Silahkan Ke Kantor Wali Nagari Atau Hubungi Balngko hanya tersedia di kantor',
+        'Silahkan Ke Kantor Wali Nagari Atau Hubungi Blangko hanya tersedia di kantor',
     wa: "+6282387807523",
     wa2: null,
   ),
@@ -139,5 +139,25 @@ final tile = <FaqModel>[
         'Anda Bisa mendaftar lansung dengan memakai Nomor WhatsApp atau E-mail yang Aktif, juga bisa Lihat Panduan di Website OSS.go.id, Jika butuh Bantuan silahkan datang ke kantor wali Nagari',
     wa: "+6282387807523",
     wa2: null,
+  ),
+  FaqModel(
+    title: 'Apa Saja Syarat Memperbaharui KK?',
+    keterangan:
+        '1.KK Asli\n2.FotoCopy KTP\n3.Surat Nikah\n4.Akta Kelahiran\n5.Ijazah Terakhir',
+    wa: "+6282387807523",
+    wa2: '+628116600678',
+  ),
+  FaqModel(
+    title: 'Apa Saja Syarat Mengurus  Akta Kelahiran?',
+    keterangan:
+        '1.KK Asli\n2.FotoCopy KTP\n3.Surat Nikah\n4.Surat Keterangan lahir\n5.KTP Saksi 2 Orang',
+    wa: "+6282387807523",
+    wa2: '+628116600678',
+  ),
+  FaqModel(
+    title: 'Apa Saja Syarat Mengurus  Akta Kematian?',
+    keterangan: '1.KK Asli\n2.FotoCopy KTP\n3.Surat Keterangan Meninggal Dunia',
+    wa: "+6282387807523",
+    wa2: '+628116600678',
   ),
 ];

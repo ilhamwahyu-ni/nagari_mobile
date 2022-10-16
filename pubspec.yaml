@@ -96,6 +96,10 @@ flutter:
     - assets/jorong/4.png
     - assets/jorong/5.png
     - assets/profil/profil.jpeg
+    - assets/onboard/surat.png
+    - assets/onboard/pilihan.png
+    - assets/onboard/daftar.png
+    - assets/onboard/verif_email.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

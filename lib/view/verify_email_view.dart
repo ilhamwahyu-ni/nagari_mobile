@@ -20,10 +20,22 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            const SizedBox(
+              height: 250,
+              width: 250,
+              child: Image(
+                image: AssetImage('assets/onboard/verif_email.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(
+              height: 17,
+            ),
             const Text(
-                'Kami telah mengirim verifikasi email, Mohon Buka email dan Verifikasi akun anda'),
-            const Text(
-                'Jika Kamu belum menerima Verifikasi Email, Silahkan Tekan Tombol dibawah'),
+              'Kami telah mengirim verifikasi email, Mohon Buka email dan Verifikasi akun anda, Jika Kamu belum menerima Verifikasi Email, Silahkan Tekan Tombol dibawah',
+              style: TextStyle(),
+              textAlign: TextAlign.center,
+            ),
             TextButton(
               onPressed: () async {
                 context

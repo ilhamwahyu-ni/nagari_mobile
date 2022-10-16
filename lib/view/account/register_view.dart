@@ -56,7 +56,7 @@ class RegisterViewState extends State<RegisterView> {
                     height: 250,
                     width: 250,
                     child: Image(
-                      image: AssetImage('assets/splash/splash.png'),
+                      image: AssetImage('assets/onboard/daftar.png'),
                       fit: BoxFit.cover,
                     ),
                   ),

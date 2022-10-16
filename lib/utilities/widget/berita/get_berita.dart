@@ -19,7 +19,7 @@ class GetBerita extends StatefulWidget {
 class _GetBeritaState extends State<GetBerita> {
   String getGambar = 'https://batipuahateh.desa.id/desa/upload/artikel/kecil_';
 
-  final FetcArtikel _artikelList = FetcArtikel();
+  final FetcArtikelList _artikelList = FetcArtikelList();
 
   @override
   Widget build(BuildContext context) {
@@ -154,8 +154,7 @@ class DetailBerita extends StatelessWidget {
     return Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 253, 244, 244).withOpacity(0.95),
-      body: 
-      NestedScrollView(
+      body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
