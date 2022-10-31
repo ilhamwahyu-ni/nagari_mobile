@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nagarismart/auth/bloc/auth_bloc_bloc.dart';
+import 'package:nagarismart/utilities/dialog/sent_viririfikasi_email.dart';
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
               height: 17,
             ),
             const Text(
-              'Kami telah mengirim verifikasi email, Mohon Buka email dan Verifikasi akun anda, Jika Kamu belum menerima Verifikasi Email, Silahkan Tekan Tombol dibawah',
+              'Kami telah mengirim verifikasi email, Mohon Buka email dan Verifikasi akun anda, Pastikan Anda juga cek email pada Folder Spam, Jika Kamu belum menerima Verifikasi Email, Silahkan Tekan Tombol dibawah',
               style: TextStyle(),
               textAlign: TextAlign.center,
             ),
@@ -41,6 +42,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                 context
                     .read<AuthBlocBloc>()
                     .add(const AuthEventSendEmailVerification());
+                await showveerifikasiSentDialog(context);
               },
               child: const Text('Kirim Verifikasi Email'),
             ),

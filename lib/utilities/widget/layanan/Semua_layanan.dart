@@ -128,6 +128,7 @@ class _SemuaLayananState extends State<SemuaLayanan> {
                               );
                               launchUrl(
                                 launcer,
+                                mode: LaunchMode.externalApplication,
                                 webViewConfiguration:
                                     const WebViewConfiguration(
                                   enableJavaScript: true,
@@ -148,6 +149,7 @@ class _SemuaLayananState extends State<SemuaLayanan> {
                               );
                               launchUrl(
                                 launcer,
+                                mode: LaunchMode.externalApplication,
                                 webViewConfiguration:
                                     const WebViewConfiguration(
                                   enableJavaScript: true,

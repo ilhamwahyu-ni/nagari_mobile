@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wahyuilham.nagarismart">
+    package="myid.ilhamwahyuni.batipuahateh">
    
    <application
         android:label="Batipuah Ateh"

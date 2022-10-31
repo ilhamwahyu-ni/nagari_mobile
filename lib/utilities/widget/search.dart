@@ -29,7 +29,7 @@ class Search extends SearchDelegate {
     );
   }
 
-  final FetcArtikel _artikelList = FetcArtikel();
+  final FetcArtikelList _artikelList = FetcArtikelList();
   @override
   Widget buildResults(BuildContext context) {
     String getGambar =
@@ -46,11 +46,13 @@ class Search extends SearchDelegate {
 
                 return GestureDetector(
                   onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailBerita(
-                                artikelModel: data[index],
-                              ))),
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailBerita(
+                        artikelModel: data[index],
+                      ),
+                    ),
+                  ),
                   child: Hero(
                     tag: data[index].id,
                     child: Card(
@@ -146,12 +148,13 @@ class Search extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return Center(
-        child: Text(
-      'Berita',
-      style: Theme.of(context)
-          .textTheme
-          .titleMedium!
-          .copyWith(fontWeight: FontWeight.w600),
-    ));
+      child: Text(
+        'Berita',
+        style: Theme.of(context)
+            .textTheme
+            .titleMedium!
+            .copyWith(fontWeight: FontWeight.w600),
+      ),
+    );
   }
 }

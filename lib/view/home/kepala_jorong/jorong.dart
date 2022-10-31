@@ -71,7 +71,6 @@ class _JorongState extends State<Jorong> {
           ];
         },
         body: SizedBox(
-          height: MediaQuery.of(context).size.height,
           child: ListView.builder(
             // physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -88,64 +87,61 @@ class _JorongState extends State<Jorong> {
                     Radius.circular(10),
                   ),
                 ),
-                child: Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.red,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                    jorong.image,
-                                  ),
-                                  fit: BoxFit.contain),
-                            ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: Colors.red,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  jorong.image,
+                                ),
+                                fit: BoxFit.contain),
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              jorong.nama,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 25, fontWeight: FontWeight.w500),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            jorong.nama,
+                            style: GoogleFonts.poppins(
+                                fontSize: 25, fontWeight: FontWeight.w500),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                            child: Text(
+                              'Kepala ${jorong.jorong}',
+                              style: GoogleFonts.poppins(fontSize: 15),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                              child: Text(
-                                'Kepala ${jorong.jorong}',
-                                style: GoogleFonts.poppins(fontSize: 15),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                const Text('Hubungi : '),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    final Uri wa = Uri.parse(whatsappURl);
-                                    await launchUrl(wa);
-                                  },
-                                  child: const Icon(
-                                    Icons.whatsapp,
-                                    size: 30,
-                                  ),
+                          ),
+                          Row(
+                            children: [
+                              const Text('Hubungi : '),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  final Uri wa = Uri.parse(whatsappURl);
+                                  await launchUrl(wa);
+                                },
+                                child: const Icon(
+                                  Icons.whatsapp,
+                                  size: 30,
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },
