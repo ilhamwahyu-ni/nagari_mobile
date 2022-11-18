@@ -11,18 +11,19 @@ class ArtikelModel {
   String? hit;
   String? kategori;
 
-  ArtikelModel(
-      {this.judul,
-      this.id,
-      this.gambar,
-      this.isi,
-      this.tglUpload,
-      this.slug,
-      this.gambar1,
-      this.gambar2,
-      this.gambar3,
-      this.hit,
-      this.kategori});
+  ArtikelModel({
+    this.judul,
+    this.id,
+    this.gambar,
+    this.isi,
+    this.tglUpload,
+    this.slug,
+    this.gambar1,
+    this.gambar2,
+    this.gambar3,
+    this.hit,
+    this.kategori,
+  });
 
   ArtikelModel.fromJson(Map<String, dynamic> json) {
     judul = json['judul'];

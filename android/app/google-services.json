@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "970409276321",
-    "project_id": "my-first-nagari-smart",
-    "storage_bucket": "my-first-nagari-smart.appspot.com"
+    "project_number": "263865644279",
+    "project_id": "batipuah-ateh",
+    "storage_bucket": "batipuah-ateh.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:970409276321:android:50dc585b7e27ded2bb91e0",
+        "mobilesdk_app_id": "1:263865644279:android:9b6ada2bc10de561240ff2",
         "android_client_info": {
-          "package_name": "myid.ilhamwahyuni.batipuahateh"
+          "package_name": "je.zoya.batipuh"
         }
       },
       "oauth_client": [
         {
-          "client_id": "970409276321-smc20or37gcnh81084d99oc89tmmbtkl.apps.googleusercontent.com",
+          "client_id": "263865644279-im7uhvtmcgmcc3hoioi03vhbiuc9jd68.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2TOq4BOxoE1NeT2u2qlLMdmHFTKyZFtQ"
+          "current_key": "AIzaSyBzg6UDDO87FdmXUX9I4uUNVBB5ILmJ7qI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "970409276321-smc20or37gcnh81084d99oc89tmmbtkl.apps.googleusercontent.com",
+              "client_id": "263865644279-im7uhvtmcgmcc3hoioi03vhbiuc9jd68.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

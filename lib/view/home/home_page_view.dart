@@ -8,8 +8,8 @@ import 'package:nagarismart/utilities/dialog/logout_dialog.dart';
 import 'package:nagarismart/utilities/widget/api_service.dart';
 import 'package:nagarismart/utilities/widget/artikelModel.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
+import 'package:nagarismart/utilities/widget/faq/faq.dart';
 import 'package:nagarismart/utilities/widget/layanan.dart';
-import 'package:nagarismart/utilities/widget/layanan/Semua_layanan.dart';
 import 'package:nagarismart/utilities/widget/profil/profil.dart';
 import 'package:nagarismart/utilities/widget/wali_nagari.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +67,6 @@ class _HomePageViewState extends State<HomePageView> {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              // ignore: prefer_const_constructors
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child:
-                    const Image(image: AssetImage('assets/splash/splash.png')),
-              ),
               actions: [
                 IconButton(
                   splashRadius: 1,
@@ -121,6 +115,41 @@ class _HomePageViewState extends State<HomePageView> {
                     Expanded(
                       flex: 1,
                       child: Layanan(
+                        icon: const Icon(Icons.whatsapp),
+                        title: 'No. Penting  ',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const Jorong(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Layanan(
+                        icon: const Icon(Icons.receipt_long),
+                        title: 'Semua Berita',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const GetBerita(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Layanan(
                         icon: const Icon(Icons.fact_check),
                         title: 'Surat Online',
                         onTap: () async {
@@ -141,98 +170,13 @@ class _HomePageViewState extends State<HomePageView> {
                     Expanded(
                       flex: 1,
                       child: Layanan(
-                        icon: const Icon(Icons.local_library_sharp),
-                        title: 'Dukcapil',
+                        icon: const Icon(Icons.question_answer),
+                        title: 'FAQ',
                         onTap: () async {
-                          final Uri launcer = Uri.parse(
-                            oase,
-                          );
-                          launchUrl(
-                            launcer,
-                            mode: LaunchMode.externalApplication,
-                            webViewConfiguration: const WebViewConfiguration(
-                              enableJavaScript: true,
-                              enableDomStorage: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Layanan(
-                        icon: const Icon(Icons.nature_people_rounded),
-                        title: 'NIB/SKU',
-                        onTap: () async {
-                          final Uri launcer = Uri.parse(
-                            oss,
-                          );
-                          launchUrl(
-                            launcer,
-                            mode: LaunchMode.externalApplication,
-                            webViewConfiguration: const WebViewConfiguration(
-                              enableJavaScript: true,
-                              enableDomStorage: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Layanan(
-                        icon: const Icon(Icons.event_repeat_rounded),
-                        title: 'Samsat',
-                        onTap: () async {
-                          final Uri launcer = Uri.parse(
-                            samsat,
-                          );
-                          launchUrl(
-                            launcer,
-                            mode: LaunchMode.externalApplication,
-                            webViewConfiguration: const WebViewConfiguration(
-                              enableJavaScript: true,
-                              enableDomStorage: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Layanan(
-                        icon: const Icon(Icons.volunteer_activism_rounded),
-                        title: 'Cek Bansos',
-                        onTap: () {
-                          final Uri launcer = Uri.parse(
-                            bansos,
-                          );
-                          launchUrl(
-                            launcer,
-                            mode: LaunchMode.externalApplication,
-                            webViewConfiguration: const WebViewConfiguration(
-                              enableJavaScript: true,
-                              enableDomStorage: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Layanan(
-                        icon: const Icon(Icons.whatsapp),
-                        title: 'No. Penting  ',
-                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const Jorong(),
+                              builder: (_) => const Faq(),
                             ),
                           );
                         },
@@ -240,39 +184,15 @@ class _HomePageViewState extends State<HomePageView> {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Layanan(
-                        icon: const Icon(Icons.dashboard_customize_sharp),
-                        title: 'Lihat Semua',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const SemuaLayanan(),
-                            ),
-                          );
-                        },
-                      ),
+                      child: Container(),
                     ),
                   ],
                 ),
-                const SizedBox(height: 7),
+                const SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Berita Terkini', style: headlineSmall),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const GetBerita(),
-                            ));
-                      },
-                      child: Text(
-                        'More',
-                        style: headlineSmall,
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(
@@ -287,7 +207,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 itemCount: 3,
                                 itemBuilder: (context, index, realIndex) {
                                   var data = snapshot.data!;
-                                  var image = getGambar + data[index].gambar;
+                                  var image = '$getGambar${data[index].gambar}';
                                   return GestureDetector(
                                     onTap: () => {
                                       Navigator.push(
@@ -324,10 +244,15 @@ class _HomePageViewState extends State<HomePageView> {
                                               height: 250,
                                               fit: BoxFit.cover,
                                               maxWidthDiskCache: 200,
-                                              placeholder: (context, url) =>
-                                                  const Center(
-                                                      child:
-                                                          CircularProgressIndicator()),
+                                              progressIndicatorBuilder:
+                                                  (context, url,
+                                                          downloadProgress) =>
+                                                      Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                        value: downloadProgress
+                                                            .progress),
+                                              ),
                                               errorWidget: (context, url,
                                                       error) =>
                                                   const Center(

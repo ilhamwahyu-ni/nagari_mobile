@@ -1,4 +1,4 @@
-package myid.ilhamwahyuni.batipuahateh
+package je.zoya.batipuh
 
 import io.flutter.embedding.android.FlutterActivity
 

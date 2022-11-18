@@ -108,21 +108,23 @@ final tile = <FaqModel>[
   FaqModel(
     title: 'Bagaimana Cara Menggunakan Layanan Surat Online Nagari?',
     keterangan:
-        'Silahkan masukkan NIK dan PIN yang telah didapat dari Kantor Wali Nagari, Untuk Menggunakan Seluruh Layanan. Layanan Berupa Buat Surat,Ganti PIN layanan dan sebagainya',
+        '''Silahkan masukkan NIK dan PIN yang telah didapat dari Kantor Wali Nagari, Untuk Menggunakan Seluruh Layanan. Layanan Berupa Buat Surat,Ganti PIN layanan dan sebagainya''',
     wa: null,
     wa2: null,
   ),
   FaqModel(
     title: 'Bagaimana Cara Saya mendapatkan PIN Surat Online Nagari?',
     keterangan:
-        'Pertama Pastikan Dokumen Kependudukan Anda Terdaftar Di Nagari Batipuah Ateh, Kemudian Silahkan Minta PIN Pada Operator Nagari  dengan Klik Nomor WhatsApp Dibawah',
+        '''Pertama Pastikan Dokumen Kependudukan Anda Terdaftar Di Nagari Batipuah Ateh, Kemudian Silahkan Minta PIN Pada Operator Nagari  dengan Klik Nomor WhatsApp Dibawah''',
     wa: "+6282323066956",
     wa2: "+6282174515261",
   ),
   FaqModel(
     title: 'Bagaimana Cara Menggunakan Layanan Dukcapil?',
     keterangan:
-        'Cara Pertama  : Pastikan Anda Memiliki E-mail Aktif kemudian Lakukan Registrasi Pada Aplikasi OaseDukcapil Tanah Datar jika Registrasi berhasil silahkan pilih layanan yang di inginkan kemudian foto seluruh dokumen administrasi seperti KK,KTP,ijazah,Buku Nikah,Surat Pindah,F1,01,KeteranganLahir.\nCara Kedua : Layanan Dengan Petugas Registrasi Nagari (PRN).',
+        '''Cara Pertama  : Pastikan Anda Memiliki E-mail Aktif kemudian Lakukan Registrasi Pada Aplikasi OaseDukcapil Tanah Datar jika Registrasi berhasil silahkan pilih layanan yang di inginkan kemudian foto seluruh dokumen administrasi seperti KK,KTP,ijazah,Buku Nikah,Surat Pindah,F1,01,KeteranganLahir.
+        
+Cara Kedua : Layanan Dengan Petugas Registrasi Nagari (PRN).''',
     wa: "6282387807523",
     wa2: null,
   ),

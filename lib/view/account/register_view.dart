@@ -1,8 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nagarismart/auth/auth_exception.dart';
 import 'package:nagarismart/auth/bloc/auth_bloc_bloc.dart';
 import 'package:nagarismart/utilities/dialog/error_dialog.dart';
+import 'package:nagarismart/view/privacy/ketentuan.dart';
+import 'package:nagarismart/view/privacy/privacy.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -53,23 +57,15 @@ class RegisterViewState extends State<RegisterView> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 250,
-                    width: 250,
-                    child: Image(
-                      image: AssetImage('assets/onboard/daftar.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Daftar',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
+                  // const Text(
+                  //   'Daftar',
+                  //   style: TextStyle(
+                  //     fontSize: 25,
+                  //     fontWeight: FontWeight.w800,
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 25,
                   ),
@@ -132,6 +128,78 @@ class RegisterViewState extends State<RegisterView> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text:
+                                'Dengan menekan tombol " Daftar " Anda mengakui bahwa Anda telah membaca dan memahami, dan setuju semua ',
+                            style: const TextStyle(
+                                color: Colors.black38, fontSize: 11),
+                            children: [
+                              TextSpan(
+                                  text: 'Syarat Ketentuan',
+                                  style: const TextStyle(
+                                    color: Colors.black54,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.of(context)
+                                        .push(Ketentuan.route())),
+                              const TextSpan(
+                                text: ' dan ',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                              TextSpan(
+                                  text: 'Kebijakan Privasi',
+                                  style: const TextStyle(
+                                    color: Colors.black54,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.of(context)
+                                        .push(Privacy.route())),
+                              const TextSpan(
+                                text: ' yang berlaku didalam aplikasi ini',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      final Uri url = Uri.parse(
+                          'https://batipuahateh.desa.id/artikel/2022/11/15/kebijakan-privacy');
+                      launchUrl(
+                        url,
+                        mode: LaunchMode.externalApplication,
+                        webViewConfiguration: const WebViewConfiguration(
+                          enableJavaScript: true,
+                          enableDomStorage: true,
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Syarat Ketentuan dan Kebijakan Privasi di Website',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 11,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ],

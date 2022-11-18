@@ -2,7 +2,6 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:nagarismart/utilities/widget/berita/get_berita.dart';
 import 'package:nagarismart/utilities/widget/faq/faq.dart';
-import 'package:nagarismart/utilities/widget/layanan/Semua_layanan.dart';
 import 'package:nagarismart/view/home/home_page_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,7 +16,6 @@ class _HomeViewState extends State<HomeView> {
   final screen = [
     const HomePageView(),
     const GetBerita(),
-    const SemuaLayanan(),
     const Faq(),
   ];
 
@@ -43,11 +41,6 @@ class _HomeViewState extends State<HomeView> {
           BottomNavyBarItem(
               icon: const Icon(Icons.receipt_long),
               title: const Text('Berita'),
-              activeColor: const Color.fromARGB(255, 255, 0, 0),
-              inactiveColor: Colors.black54),
-          BottomNavyBarItem(
-              icon: const Icon(Icons.explore),
-              title: const Text('Layanan'),
               activeColor: const Color.fromARGB(255, 255, 0, 0),
               inactiveColor: Colors.black54),
           BottomNavyBarItem(

@@ -106,7 +106,7 @@ class _GetBeritaState extends State<GetBerita> {
                                 )
                               },
                               child: NewsCard(
-                                imgUrl: getGambar + data[index].gambar,
+                                imgUrl: '$getGambar${data[index].gambar}',
                                 judul: data[index].judul,
                                 tgl: formatter,
                                 hit: data[index].hit,
@@ -277,7 +277,7 @@ class DetailBerita extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
-                    Bidi.stripHtmlIfNeeded('${artikelModel.isi}'),
+                    Bidi.stripHtmlIfNeeded('''${artikelModel.isi}'''),
                     textAlign: TextAlign.justify,
                     style: GoogleFonts.poppins(
                       fontSize: 17,

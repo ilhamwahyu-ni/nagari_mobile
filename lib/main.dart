@@ -10,8 +10,9 @@ import 'package:nagarismart/view/account/forgot_password_view.dart';
 import 'package:nagarismart/view/account/login_view.dart';
 import 'package:nagarismart/view/account/register_view.dart';
 import 'package:nagarismart/view/home/nav_bar_item.dart';
-import 'package:nagarismart/view/verify_email_view.dart';
+import 'package:nagarismart/verify_email_view.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:nagarismart/view/privacy/privacy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
