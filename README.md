@@ -1,5 +1,5 @@
 
-<h1 align="center">Aplikasi Sistem Informasi Nagari Batipuah Ateh</h1>
+<h1 align="center">Aplikasi Informasi Nagari Batipuah Ateh</h1>
 
 <p>
   Selamat datang di platform digital <strong>Nagari Batipuah Ateh</strong>. Aplikasi ini adalah solusi modern berbasis Android yang dirancang untuk menjadi jembatan informasi dan pelayanan antara pemerintah nagari dengan seluruh warganya.
