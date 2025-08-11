@@ -9,7 +9,7 @@ Aplikasi ini merupakan bagian dari sistem tata kelola desa terpadu yang juga dap
 
 ---
 
-### 🎯 Tujuan Utama
+###  Tujuan Utama
 
 Tujuan utama dari platform **Batipuah Ateh** adalah untuk menciptakan sistem tata kelola pemerintahan nagari yang transparan, efisien, dan mudah diakses. Kami menghadirkan solusi digital untuk berbagai kebutuhan, mulai dari administrasi, data kependudukan, hingga pelayanan publik lainnya.
 
@@ -26,7 +26,7 @@ Tujuan utama dari platform **Batipuah Ateh** adalah untuk menciptakan sistem tat
   </tr>
 </table>
 
-### ✨ Fitur Unggulan Aplikasi Android
+###  Fitur Unggulan Aplikasi Android
 
 Dapatkan kemudahan layanan tanpa batas langsung dari genggaman Anda. Aplikasi Android ini dirancang khusus untuk warga Nagari Batipuah Ateh dengan fitur-fitur berikut:
 
@@ -36,7 +36,7 @@ Dapatkan kemudahan layanan tanpa batas langsung dari genggaman Anda. Aplikasi An
 
 ---
 
-### 📲 Unduh Aplikasi Sekarang!
+###  Unduh Aplikasi Sekarang!
 
 Aplikasi **Batipuah Ateh** kini telah tersedia secara resmi di Google Play Store. Unduh sekarang melalui tautan di bawah ini:
 
@@ -48,7 +48,7 @@ Aplikasi **Batipuah Ateh** kini telah tersedia secara resmi di Google Play Store
 
 ---
 
-### 🚀 Keunggulan Platform Kami
+###  Keunggulan
 
 * **Pelayanan Cepat & Efisien**
     Manfaatkan sistem administrasi yang lebih responsif dengan dukungan data kependudukan yang akurat dan terpusat.
